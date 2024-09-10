@@ -1,6 +1,13 @@
 name: my starter workflow
 on:
   workflow_dispatch:
+    inputs:
+      message:
+        description: 'The message to log'
+        required: true
 jobs:
   call-workflow-in-local-repo:
     uses: venkatkumarp/repo-reusable/.github/workflows/reusable-workflow-1.yml@main
+    with:
+      message: ${{ github.event.inputs.message }}
+
